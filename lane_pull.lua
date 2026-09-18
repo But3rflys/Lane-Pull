@@ -311,90 +311,74 @@ end)()
 
 local localization = qLocalization.new({
 	en = {
-		lp = {
-			group = {
-				main = "The basics",
-				way = "How it plays",
-				safe = "Stay safe",
-				debug = "Debug stuff",
-			},
-			enable = "Turn it on",
-			enable_tip = "Hit the key and your Dominator creep grabs\nthe enemy wave and drags it right to you",
-			key = "Pull key",
-			key_tip = "Tap once to go pull, tap again to call it off.\nWave's in the fog? It just waits for the spawn",
-			pick = "Which wave to grab",
-			pick_tip = "For waves in the fog it counts the distance\nto the spot where your creep meets them",
-			picks = {
-				hero = "Closest to me",
-				puller = "Closest to my creep",
-				cursor = "Whatever's by my cursor",
-			},
-			summons = "Summons can pull too",
-			summons_tip = "Not just the Dominator creep,\nyour summons can do the pulling too",
-			hide = "Hide in the trees",
-			hide_tip = "Your creep chills in the trees till the wave shows up.\nIf enemies spot it, it finds another bush",
-			dive = "Tower dive for waves",
-			dive_tip = "No safe spot to catch the wave? Your creep\nsits under their tower and just eats the shots",
-			gap = "How far it can run ahead",
-			gap_tip = "How far your creep can get ahead of the pack.\nIf they fall behind more, it waits up",
-			after = "Once the wave's here",
-			after_tip = "What your creep does when the wave reaches you",
-			afters = {
-				stay = "Chill behind me",
-				attack = "Help me farm",
-			},
-			abort_hp = "Bail out below HP",
-			abort_hp_tip = "Drop below this and your creep ditches\nthe pull and runs back to you",
-			avoid = "Dodge enemy heroes",
-			avoid_tip = "Calls off the pull if an enemy hero\nshows up near your creep",
-			avoid_radius = "How close is too close",
-			debug = "Debug overlay",
-			debug_tip = "Shows lanes, wave guesses, what your creep\nis up to and dumps stuff into the log",
-			bind_name = "Lane Pull",
-		},
+		lp_group_main = "The basics",
+		lp_group_way = "How it plays",
+		lp_group_safe = "Stay safe",
+		lp_group_debug = "Debug stuff",
+		lp_enable = "Turn it on",
+		lp_enable_tip = "Hit the key and your Dominator creep grabs\nthe enemy wave and drags it right to you",
+		lp_key = "Pull key",
+		lp_key_tip = "Tap once to go pull, tap again to call it off.\nWave's in the fog? It just waits for the spawn",
+		lp_pick = "Which wave to grab",
+		lp_picks_hero = "Closest to me",
+		lp_picks_puller = "Closest to my creep",
+		lp_picks_cursor = "Whatever's by my cursor",
+		lp_pick_tip = "For waves in the fog it counts the distance\nto the spot where your creep meets them",
+		lp_units = "Who does the pulling",
+		lp_units_tip = "Tick who's allowed to pull. Order is priority,\njust drag the icons around",
+		lp_hide = "Hide in the trees",
+		lp_hide_tip = "Your creep chills in the trees till the wave shows up.\nIf enemies spot it, it finds another bush",
+		lp_dive = "Tower dive for waves",
+		lp_dive_tip = "No safe spot to catch the wave? Your creep\nsits under their tower and just eats the shots",
+		lp_gap = "How far it can run ahead",
+		lp_gap_tip = "How far your creep can get ahead of the pack.\nIf they fall behind more, it waits up",
+		lp_after = "Once the wave's here",
+		lp_afters_stay = "Chill behind me",
+		lp_afters_attack = "Help me farm",
+		lp_after_tip = "What your creep does when the wave reaches you",
+		lp_abort_hp = "Bail out below HP",
+		lp_abort_hp_tip = "Drop below this and your creep ditches\nthe pull and runs back to you",
+		lp_avoid = "Dodge enemy heroes",
+		lp_avoid_tip = "Calls off the pull if an enemy hero\nshows up near your creep",
+		lp_avoid_radius = "How close is too close",
+		lp_debug = "Debug overlay",
+		lp_debug_tip = "Shows lanes, wave guesses, what your creep\nis up to and dumps stuff into the log",
+		lp_bind_name = "Lane Pull",
 	},
 	ru = {
-		lp = {
-			group = {
-				main = "Основное",
-				way = "Поведение",
-				safe = "Безопасность",
-				debug = "Отладка",
-			},
-			enable = "Включить",
-			enable_tip = "Крип с Доминатора по нажатию клавиши забирает\nвражескую волну и ведет ее к герою",
-			key = "Клавиша выпула",
-			key_tip = "Первое нажатие запускает выпул, второе отменяет.\nЕсли волна в тумане, крип ждет ее по таймеру спавна",
-			pick = "Какую волну тянуть",
-			pick_tip = "Для волны в тумане расстояние считается\nдо точки, где крип ее встретит",
-			picks = {
-				hero = "Ближайшую к герою",
-				puller = "Ближайшую к нашему крипу",
-				cursor = "У курсора",
-			},
-			summons = "Тянуть и саммонами",
-			summons_tip = "Кроме крипа с Доминатора волну\nмогут тянуть саммоны героя",
-			hide = "Прятаться в деревьях",
-			hide_tip = "Крип ждет волну в деревьях и выходит к ее приходу.\nЕсли враги его видят, он меняет укрытие",
-			dive = "Забегать под вышку",
-			dive_tip = "Если вне радиуса вражеских вышек волну не встретить,\nкрип встает под вышку, и ее выстрелы выпул не отменяют",
-			gap = "Дистанция ведения",
-			gap_tip = "Насколько крип может оторваться от пачки.\nЕсли пачка отстала сильнее, он ждет",
-			after = "После доставки",
-			after_tip = "Что делает крип, когда волна дошла до героя",
-			afters = {
-				stay = "Стоять за героем",
-				attack = "Бить вместе с героем",
-			},
-			abort_hp = "Отмена при HP ниже",
-			abort_hp_tip = "Ниже этого порога крип бросает выпул\nи возвращается к герою",
-			avoid = "Избегать вражеских героев",
-			avoid_tip = "Бросить выпул, если рядом с нашим крипом\nвиден вражеский герой",
-			avoid_radius = "Радиус проверки героев",
-			debug = "Отладочный оверлей",
-			debug_tip = "Линии, прогноз волны, состояние крипа\nи сообщения в лог",
-			bind_name = "Выпул волны",
-		},
+		lp_group_main = "Основное",
+		lp_group_way = "Поведение",
+		lp_group_safe = "Безопасность",
+		lp_group_debug = "Отладка",
+		lp_enable = "Включить",
+		lp_enable_tip = "Крип с Доминатора по нажатию клавиши забирает\nвражескую волну и ведет ее к герою",
+		lp_key = "Клавиша выпула",
+		lp_key_tip = "Первое нажатие запускает выпул, второе отменяет.\nЕсли волна в тумане, крип ждет ее по таймеру спавна",
+		lp_pick = "Какую волну пулить",
+		lp_picks_hero = "Ближайшую к герою",
+		lp_picks_puller = "Ближайшую к нашему крипу",
+		lp_picks_cursor = "У курсора",
+		lp_pick_tip = "Для волны в тумане расстояние считается\nдо точки, где крип ее встретит",
+		lp_units = "Кем пулить",
+		lp_units_tip = "Отметь, кто может пулить волну. Порядок это приоритет,\nперетаскивай иконки мышкой",
+		lp_hide = "Прятаться в деревьях",
+		lp_hide_tip = "Крип ждет волну в деревьях и выходит к ее приходу.\nЕсли враги его видят, он меняет укрытие",
+		lp_dive = "Забегать под вышку",
+		lp_dive_tip = "Если вне радиуса вражеских вышек волну не встретить,\nкрип встает под вышку, и ее выстрелы выпул не отменяют",
+		lp_gap = "Дистанция ведения",
+		lp_gap_tip = "Насколько крип может оторваться от пачки.\nЕсли пачка отстала сильнее, он ждет",
+		lp_after = "После доставки",
+		lp_afters_stay = "Стоять за героем",
+		lp_afters_attack = "Бить вместе с героем",
+		lp_after_tip = "Что делает крип, когда волна дошла до героя",
+		lp_abort_hp = "Отмена при HP ниже",
+		lp_abort_hp_tip = "Ниже этого порога крип бросает выпул\nи возвращается к герою",
+		lp_avoid = "Избегать вражеских героев",
+		lp_avoid_tip = "Бросить выпул, если рядом с нашим крипом\nвиден вражеский герой",
+		lp_avoid_radius = "Радиус проверки героев",
+		lp_debug = "Отладочный оверлей",
+		lp_debug_tip = "Линии, прогноз волны, состояние крипа\nи сообщения в лог",
+		lp_bind_name = "Выпул волны",
 	},
 })
 
@@ -404,10 +388,10 @@ local tab = UI.Create("Creeps", "Main", "Lane Pull")
 tab:Icon("\u{f4d7}")
 
 local page = tab:Create("Settings")
-local g_main = page:Create("lp.group.main", Enum.GroupSide.Left)
-local g_way = page:Create("lp.group.way", Enum.GroupSide.Left)
-local g_safe = page:Create("lp.group.safe", Enum.GroupSide.Right)
-local g_debug = page:Create("lp.group.debug", Enum.GroupSide.Right)
+local g_main = page:Create("lp_group_main", Enum.GroupSide.Left)
+local g_way = page:Create("lp_group_way", Enum.GroupSide.Left)
+local g_safe = page:Create("lp_group_safe", Enum.GroupSide.Right)
+local g_debug = page:Create("lp_group_debug", Enum.GroupSide.Right)
 
 local ORDER_ID = "lane_pull"
 local K = {
@@ -426,6 +410,12 @@ local K = {
 	SHOT_MEMORY         = 1.00,
 	CLIP_MARGIN         = 60.0,
 	DETOUR_MARGIN       = 150.0,
+	GUIDE_REPLAN_DIST   = 300.0,
+	GUIDE_REPLAN_TIME   = 1.5,
+	GUIDE_REACH         = 120.0,
+	GUIDE_LOOKAHEAD     = 500.0,
+	LIFE_EPS            = 3.0,
+	ALLY_CLEAR          = 650.0,
 	PATH_FACTOR         = 1.25,
 	WAIT_WEIGHT         = 25.0,
 	FUTURE_BATCHES      = 2,
@@ -535,7 +525,39 @@ local MOVE_BLOCK_STATES = {
 	STATE.MODIFIER_STATE_ROOTED,
 }
 
+local FREE_PATHING_STATES = {}
+for _, name in ipairs({
+	"MODIFIER_STATE_FLYING",
+	"MODIFIER_STATE_FLYING_FOR_PATHING_PURPOSES_ONLY",
+	"MODIFIER_STATE_ALLOW_PATHING_THROUGH_TREES",
+	"MODIFIER_STATE_ALLOW_PATHING_THROUGH_CLIFFS",
+	"MODIFIER_STATE_ALLOW_PATHING_THROUGH_OBSTRUCTIONS",
+}) do
+	if STATE[name] then FREE_PATHING_STATES[#FREE_PATHING_STATES + 1] = STATE[name] end
+end
+
 local LANE_NAMES = { "top", "mid", "bot" }
+
+local UNIT_KINDS = {
+	{ id = "Dominator creep", on = true, patterns = { "^npc_dota_neutral_" },
+		icon = "panorama/images/items/helm_of_the_dominator_png.vtex_c" },
+	{ id = "Spirit Bear", on = true, patterns = { "lone_druid_bear", "spirit_bear" },
+		icon = "panorama/images/spellicons/lone_druid_spirit_bear_png.vtex_c" },
+	{ id = "Lycan wolves", on = false, patterns = { "lycan_wolf" },
+		icon = "panorama/images/spellicons/lycan_summon_wolves_png.vtex_c" },
+	{ id = "Treants", on = false, guide = true, patterns = { "furion_treant" },
+		icon = "panorama/images/spellicons/furion_force_of_nature_png.vtex_c" },
+	{ id = "Eidolons", on = false, patterns = { "eidolon" },
+		icon = "panorama/images/spellicons/enigma_demonic_conversion_png.vtex_c" },
+	{ id = "Boar", on = false, patterns = { "beastmaster_boar" },
+		icon = "panorama/images/spellicons/beastmaster_call_of_the_wild_png.vtex_c" },
+	{ id = "Familiars", on = false, guide = true, patterns = { "visage_familiar" },
+		icon = "panorama/images/spellicons/visage_summon_familiars_png.vtex_c" },
+	{ id = "Forged Spirits", on = false, patterns = { "forged_spirit" },
+		icon = "panorama/images/spellicons/invoker_forge_spirit_png.vtex_c" },
+	{ id = "Spiderlings", on = false, guide = true, patterns = { "broodmother_spider" },
+		icon = "panorama/images/spellicons/broodmother_spawn_spiderlings_png.vtex_c" },
+}
 
 local STRUCTURES = {
 	["npc_dota_goodguys_tower1_top"] = { -6336.0, 1856.0, 128.0 },
@@ -588,53 +610,60 @@ local enemy_now = {}
 local enemy_by_idx = {}
 local allied_now = {}
 local danger_towers = {}
+local ally_zones = {}
 local last_msg = nil
 local last_msg_t = -100.0
 local debug_font = nil
 
 local ui = {}
 
-ui.enable = g_main:Switch("lp.enable", false, "\u{f011}")
-ui.enable:ToolTip("lp.enable_tip")
+ui.enable = g_main:Switch("lp_enable", false, "\u{f011}")
+ui.enable:ToolTip("lp_enable_tip")
 
-ui.key = g_main:Bind("lp.key", Enum.ButtonCode.KEY_NONE, "\u{f11c}")
-ui.key:ToolTip("lp.key_tip")
+ui.key = g_main:Bind("lp_key", Enum.ButtonCode.KEY_NONE, "\u{f11c}")
+ui.key:ToolTip("lp_key_tip")
 
-ui.pick = g_main:Combo("lp.pick", { "lp.picks.hero", "lp.picks.puller", "lp.picks.cursor" }, 0)
+ui.pick = g_main:Combo("lp_pick", { "lp_picks_hero", "lp_picks_puller", "lp_picks_cursor" }, 0)
 ui.pick:Icon("\u{f05b}")
-ui.pick:ToolTip("lp.pick_tip")
+ui.pick:ToolTip("lp_pick_tip")
 
-ui.any_unit = g_main:Switch("lp.summons", false, "\u{f1b0}")
-ui.any_unit:ToolTip("lp.summons_tip")
+local unit_items = {}
+for i = 1, #UNIT_KINDS do
+	local kind = UNIT_KINDS[i]
+	unit_items[i] = { kind.id, kind.icon, kind.on }
+end
+ui.units = g_main:MultiSelect("lp_units", unit_items, true)
+ui.units:DragAllowed(true)
+ui.units:ToolTip("lp_units_tip")
 
-ui.hide = g_way:Switch("lp.hide", true, "\u{f1bb}")
-ui.hide:ToolTip("lp.hide_tip")
+ui.hide = g_way:Switch("lp_hide", true, "\u{f1bb}")
+ui.hide:ToolTip("lp_hide_tip")
 
-ui.dive = g_way:Switch("lp.dive", true, "\u{f447}")
-ui.dive:ToolTip("lp.dive_tip")
+ui.dive = g_way:Switch("lp_dive", true, "\u{f447}")
+ui.dive:ToolTip("lp_dive_tip")
 
-ui.gap = g_way:Slider("lp.gap", 250, 700, 400, "%d")
+ui.gap = g_way:Slider("lp_gap", 250, 700, 400, "%d")
 ui.gap:Icon("\u{f337}")
-ui.gap:ToolTip("lp.gap_tip")
+ui.gap:ToolTip("lp_gap_tip")
 
-ui.after = g_way:Combo("lp.after", { "lp.afters.stay", "lp.afters.attack" }, 0)
+ui.after = g_way:Combo("lp_after", { "lp_afters_stay", "lp_afters_attack" }, 0)
 ui.after:Icon("\u{f11e}")
-ui.after:ToolTip("lp.after_tip")
+ui.after:ToolTip("lp_after_tip")
 
-ui.abort_hp = g_safe:Slider("lp.abort_hp", 10, 80, 30, "%d%%")
+ui.abort_hp = g_safe:Slider("lp_abort_hp", 10, 80, 30, "%d%%")
 ui.abort_hp:Icon("\u{f004}")
-ui.abort_hp:ToolTip("lp.abort_hp_tip")
+ui.abort_hp:ToolTip("lp_abort_hp_tip")
 
-ui.avoid = g_safe:Switch("lp.avoid", true, "\u{f70c}")
-ui.avoid:ToolTip("lp.avoid_tip")
+ui.avoid = g_safe:Switch("lp_avoid", true, "\u{f70c}")
+ui.avoid:ToolTip("lp_avoid_tip")
 
-ui.avoid_radius = g_safe:Slider("lp.avoid_radius", 500, 1600, 900, "%d")
+ui.avoid_radius = g_safe:Slider("lp_avoid_radius", 500, 1600, 900, "%d")
 ui.avoid_radius:Icon("\u{f1ce}")
 
-ui.debug = g_debug:Switch("lp.debug", false, "\u{f188}")
-ui.debug:ToolTip("lp.debug_tip")
+ui.debug = g_debug:Switch("lp_debug", false, "\u{f188}")
+ui.debug:ToolTip("lp_debug_tip")
 
-ui.key:Properties(localization.Get("lp.bind_name"))
+ui.key:Properties(localization.Get("lp_bind_name"))
 
 local function refresh_disabled()
 	local on = ui.enable:Get()
@@ -642,7 +671,7 @@ local function refresh_disabled()
 	ui.pick:Disabled(not on)
 	ui.dive:Disabled(not on)
 	ui.hide:Disabled(not on)
-	ui.any_unit:Disabled(not on)
+	ui.units:Disabled(not on)
 	ui.gap:Disabled(not on)
 	ui.after:Disabled(not on)
 	ui.abort_hp:Disabled(not on)
@@ -999,11 +1028,10 @@ local function safe_point(pt)
 	return p
 end
 
-local function first_tower_entry(fx, fy, dx, dy)
+local function first_entry(fx, fy, dx, dy, circles, first, hit)
 	local a = dx * dx + dy * dy
-	local first, tower = nil, nil
-	for i = 1, #danger_towers do
-		local t = danger_towers[i]
+	for i = 1, #circles do
+		local t = circles[i]
 		local ox, oy = fx - t.pos:GetX(), fy - t.pos:GetY()
 		local c = ox * ox + oy * oy - t.r * t.r
 		if c > 0 then
@@ -1012,12 +1040,12 @@ local function first_tower_entry(fx, fy, dx, dy)
 			if disc >= 0 then
 				local enter = (-b - math.sqrt(disc)) / (2 * a)
 				if enter >= 0 and enter <= 1 and (not first or enter < first) then
-					first, tower = enter, t
+					first, hit = enter, t
 				end
 			end
 		end
 	end
-	return first, tower
+	return first, hit
 end
 
 local function walkable_near(pt, center)
@@ -1033,15 +1061,18 @@ local function walkable_near(pt, center)
 	return pt
 end
 
-local function route(from, to)
+local function route(from, to, use_towers, use_allies)
 	local fx, fy = from:GetX(), from:GetY()
 	local dx, dy = to:GetX() - fx, to:GetY() - fy
 	local len2 = dx * dx + dy * dy
 	if len2 < 1.0 then return to end
-	local enter, t = first_tower_entry(fx, fy, dx, dy)
+	local enter, t = nil, nil
+	if use_towers then enter, t = first_entry(fx, fy, dx, dy, danger_towers, enter, t) end
+	if use_allies then enter, t = first_entry(fx, fy, dx, dy, ally_zones, enter, t) end
 	if not enter then return to end
 
 	if t.pos:Distance2D(to) < t.r then
+		if t.ally then return to end
 		local k = math.max(0.0, enter - K.CLIP_MARGIN / math.sqrt(len2))
 		return Vector(fx + dx * k, fy + dy * k, to:GetZ())
 	end
@@ -1328,42 +1359,96 @@ local function detect_wave(lane, anchors)
 	return best
 end
 
-local function is_puller(u, my_id, hero, any_unit)
-	if u == hero then return false end
-	if not Entity.IsAlive(u) or Entity.IsDormant(u) then return false end
-	if NPC.IsWaitingToSpawn(u) then return false end
-	if not Entity.IsControllableByPlayer(u, my_id) then return false end
-	if NPC.IsHero(u) or NPC.IsIllusion(u) then return false end
-	if NPC.IsCourier(u) or NPC.IsWard(u) or NPC.IsStructure(u) then return false end
-	if NPC.IsLaneCreep(u) then return false end
-	if any_unit then return true end
+local function unit_kind(u)
 	local name = NPC.GetUnitName(u) or ""
-	return name:find("^npc_dota_neutral_") ~= nil
-end
-
-local function best_puller(list, my_id, hero, anchor)
-	local any_unit = ui.any_unit:Get()
-	local min_hp = ui.abort_hp:Get() + 5
-	local best, best_d = nil, math.huge
-	for i = 1, #list do
-		local u = list[i]
-		if is_puller(u, my_id, hero, any_unit) then
-			local max_hp = Entity.GetMaxHealth(u) or 0
-			local pct = max_hp > 0 and ((Entity.GetHealth(u) or 0) / max_hp * 100.0) or 0
-			if pct >= min_hp then
-				local d = Entity.GetAbsOrigin(u):Distance2D(anchor)
-				if d < best_d then best, best_d = u, d end
-			end
+	for i = 1, #UNIT_KINDS do
+		local kind = UNIT_KINDS[i]
+		for j = 1, #kind.patterns do
+			if name:find(kind.patterns[j]) then return kind end
 		end
 	end
-	return best
+	return nil
+end
+
+local function free_pathing(u)
+	for i = 1, #FREE_PATHING_STATES do
+		if NPC.HasState(u, FREE_PATHING_STATES[i]) then return true end
+	end
+	local kind = unit_kind(u)
+	return kind ~= nil and kind.guide == true
+end
+
+local function puller_kind(u, my_id, hero)
+	if u == hero then return nil end
+	if not Entity.IsAlive(u) or Entity.IsDormant(u) then return nil end
+	if NPC.IsWaitingToSpawn(u) then return nil end
+	if not Entity.IsControllableByPlayer(u, my_id) then return nil end
+	if NPC.IsIllusion(u) or NPC.IsLaneCreep(u) then return nil end
+	if NPC.IsCourier(u) or NPC.IsWard(u) or NPC.IsStructure(u) then return nil end
+	local kind = unit_kind(u)
+	if kind and ui.units:Get(kind.id) then return kind.id end
+	return nil
+end
+
+local function spirit_bear(hero)
+	if not CustomEntities or not CustomEntities.GetSpiritBear then return nil end
+	local ability = NPC.GetAbility(hero, "lone_druid_spirit_bear")
+	return ability and CustomEntities.GetSpiritBear(ability) or nil
+end
+
+local function life_left(u, now)
+	local timer = NPC.GetModifier(u, "modifier_kill")
+	if not timer then return math.huge end
+	local die = Modifier.GetDieTime(timer) or 0
+	if die <= 0 then return math.huge end
+	return die - now
+end
+
+local function better_puller(a, b)
+	if not b then return true end
+	if a.rank ~= b.rank then return a.rank < b.rank end
+	if math.abs(a.life - b.life) > K.LIFE_EPS then return a.life > b.life end
+	if a.hp ~= b.hp then return a.hp > b.hp end
+	return a.d < b.d
 end
 
 local function pick_puller(my_id, hero, anchor)
-	local list = NPCs.GetAll(UT.TYPE_CREEP | UT.TYPE_CONSIDERED_HERO)
-	local found = list and best_puller(list, my_id, hero, anchor) or nil
-	if found then return found end
-	return best_puller(NPCs.GetAll() or {}, my_id, hero, anchor)
+	local list = NPCs.GetAll() or {}
+	local bear = spirit_bear(hero)
+	if bear then list[#list + 1] = bear end
+
+	local ranks = {}
+	local enabled = ui.units:ListEnabled()
+	for i = 1, #enabled do ranks[enabled[i]] = i end
+
+	local now = GameRules.GetGameTime()
+	local min_hp = ui.abort_hp:Get() + 5
+	local seen = {}
+	local best = nil
+	for i = 1, #list do
+		local u = list[i]
+		local idx = Entity.GetIndex(u)
+		if not seen[idx] then
+			seen[idx] = true
+			local kind = puller_kind(u, my_id, hero)
+			if kind then
+				local hp = Entity.GetHealth(u) or 0
+				local max_hp = Entity.GetMaxHealth(u) or 0
+				local pct = max_hp > 0 and (hp / max_hp * 100.0) or 0
+				if pct >= min_hp then
+					local entry = {
+						unit = u,
+						rank = ranks[kind] or math.huge,
+						life = life_left(u, now),
+						hp = hp,
+						d = Entity.GetAbsOrigin(u):Distance2D(anchor),
+					}
+					if better_puller(entry, best) then best = entry end
+				end
+			end
+		end
+	end
+	return best and best.unit or nil
 end
 
 local function dist_xy(ax, ay, bx, by)
@@ -1371,7 +1456,28 @@ local function dist_xy(ax, ay, bx, by)
 	return math.sqrt(dx * dx + dy * dy)
 end
 
-local function issue(kind, pos, target, no_settle)
+local function guide_point(from, goal, now)
+	local g = job.guide
+	if not g or g.goal:Distance2D(goal) > K.GUIDE_REPLAN_DIST or now - g.t > K.GUIDE_REPLAN_TIME then
+		g = { goal = goal:Clone(), path = GridNav.BuildPath(from, goal, false) or {}, i = 1, t = now }
+		job.guide = g
+	end
+	local path = g.path
+	if #path == 0 then return goal end
+	while g.i <= #path and from:Distance2D(path[g.i]) < K.GUIDE_REACH do
+		g.i = g.i + 1
+	end
+	if g.i > #path then return goal end
+	local j = g.i
+	while j < #path
+		and from:Distance2D(path[j + 1]) < K.GUIDE_LOOKAHEAD
+		and GridNav.IsTraversableFromTo(from, path[j + 1], false) do
+		j = j + 1
+	end
+	return path[j]
+end
+
+local function issue(kind, pos, target, no_settle, no_route)
 	local u = job.unit
 	if orders_blocked(u) then return end
 	local now = GameRules.GetGameTime()
@@ -1382,7 +1488,9 @@ local function issue(kind, pos, target, no_settle)
 
 	if kind == "move" or kind == "attack_move" then
 		if move_blocked(u) then return end
-		if not job.dive then pos = route(u_pos, pos) end
+		if not no_route then
+			pos = route(u_pos, pos, not job.dive, job.state == "lead")
+		end
 	end
 	if kind == "move" then
 		local gx, gy = pos:GetX(), pos:GetY()
@@ -1454,6 +1562,7 @@ local function set_state(state, reason)
 	job.hook_idx = nil
 	job.lead_best = nil
 	job.lead_t = nil
+	job.guide = nil
 	job.info.gap = nil
 	if state == "lead" then
 		job.led = true
@@ -1463,7 +1572,7 @@ local function set_state(state, reason)
 end
 
 local function finish(reason)
-	if reason then note("готово: " .. reason) end
+	if reason then note("done: " .. reason) end
 	job = nil
 end
 
@@ -1473,7 +1582,7 @@ end
 
 local function rehook(reason, visible)
 	if wave_engaged(visible) then
-		return abort("волна встретилась с нашими крипами")
+		return abort("the wave ran into our creeps")
 	end
 	job.retries = job.retries + 1
 	if job.retries > K.MAX_RETRIES then
@@ -1493,19 +1602,19 @@ local function wave_busy()
 		job.batch = nil
 		job.meet_s = nil
 		job.missed = job.missed + 1
-		if job.missed > K.MAX_MISSED then return abort("волна встретилась с нашими крипами") end
-		return set_state("search", "волна дерется с нашими крипами, жду следующую")
+		if job.missed > K.MAX_MISSED then return abort("the wave ran into our creeps") end
+		return set_state("search", "the wave's busy with our creeps, waiting for the next one")
 	end
-	abort("волна встретилась с нашими крипами")
+	abort("the wave ran into our creeps")
 end
 
 local function wave_lost(now)
 	if now - job.wave.seen_at <= K.WAVE_LOST_TIME then return end
 	if job.lane then
 		job.wave = nil
-		set_state("search", "волна пропала из виду")
+		set_state("search", "lost sight of the wave")
 	else
-		abort("волна пропала из виду")
+		abort("lost sight of the wave")
 	end
 end
 
@@ -1522,7 +1631,7 @@ local function step_hook(ctx)
 	local now = ctx.now
 	local visible = refresh_wave(job.wave, now)
 	if #visible == 0 then return wave_lost(now) end
-	if hooked() then return set_state("lead", "волна зацепилась") end
+	if hooked() then return set_state("lead", "got the wave's attention") end
 	if wave_engaged(visible) then return wave_busy() end
 
 	local safe = outside_towers(visible)
@@ -1541,12 +1650,12 @@ local function step_hook(ctx)
 	if close_d <= K.CONTACT_RANGE then
 		job.contact_since = job.contact_since or now
 		if now - job.contact_since >= K.CONTACT_TIME then
-			return set_state("lead", "контакт с волной")
+			return set_state("lead", "bumped right into the wave")
 		end
 	else
 		job.contact_since = nil
 	end
-	if now - job.since > K.HOOK_TIMEOUT then return rehook("не удалось зацепить", visible) end
+	if now - job.since > K.HOOK_TIMEOUT then return rehook("couldn't hook the wave", visible) end
 
 	job.info.target = close.pos
 	issue("attack", nil, close.ent)
@@ -1561,9 +1670,9 @@ local function step_approach(ctx)
 	local front = nearest(visible, ctx.hero_pos)
 	job.info.front = front.pos
 	if front.pos:Distance2D(ctx.hero_pos) <= K.MIN_PULL_DIST then
-		return set_state("deliver", "волна уже у героя")
+		return set_state("deliver", "the wave's already at you")
 	end
-	if hooked() then return set_state("lead", "агр по пути") end
+	if hooked() then return set_state("lead", "picked up aggro on the way") end
 	if wave_engaged(visible) then return wave_busy() end
 
 	local _, close_d = nearest(outside_towers(visible), ctx.u_pos)
@@ -1624,7 +1733,7 @@ local function hide_target(ctx, lane, meet, meet_s, s_pred)
 	local t_run = spot:Distance2D(meet) * K.PATH_FACTOR / ctx.u_speed
 	if t_wave - t_run <= K.LEAVE_MARGIN then
 		job.leaving = true
-		note("выхожу из засады к волне " .. clock_text(job.batch))
+		note("coming out of the trees for the " .. clock_text(job.batch) .. " wave")
 		return nil
 	end
 
@@ -1649,13 +1758,13 @@ local function step_search(ctx)
 	if lane then
 		local t0, s_pred, meet_s, dove = plan_meet(lane, ctx.u_pos, ctx.u_speed, ctx.hero_pos,
 			job.min_t0, job.batch, job.meet_s, job.dive, ui.dive:Get())
-		if not t0 then return abort("волна не найдена") end
+		if not t0 then return abort("no wave anywhere") end
 		if job.batch and t0 ~= job.batch then
 			if t0 > job.batch then
 				job.missed = job.missed + 1
-				if job.missed > K.MAX_MISSED then return abort("волна не пришла") end
+				if job.missed > K.MAX_MISSED then return abort("the wave never showed up") end
 				job.min_t0 = math.max(job.min_t0 or 0, job.batch + K.SPAWN_PERIOD)
-				note("волна " .. clock_text(job.batch) .. " ушла, жду " .. clock_text(t0))
+				note("the " .. clock_text(job.batch) .. " wave slipped away, waiting for " .. clock_text(t0))
 			end
 		end
 		if t0 ~= job.batch then
@@ -1667,7 +1776,7 @@ local function step_search(ctx)
 		job.dive = dove
 		if dove and not job.info.dive_noted then
 			job.info.dive_noted = true
-			note("безопасного места нет, забегаю под вышку за волной " .. clock_text(t0))
+			note("no safe spot, running under the tower for the " .. clock_text(t0) .. " wave")
 		end
 		meet = lane_point(lane, meet_s)
 		job.info.pred = lane_point(lane, s_pred)
@@ -1687,7 +1796,7 @@ local function step_search(ctx)
 		job.info.meet = nil
 		job.info.batch = nil
 		job.started = now
-		set_state("approach", "волна замечена")
+		set_state("approach", "wave spotted")
 		return step_approach(ctx)
 	end
 
@@ -1695,15 +1804,15 @@ local function step_search(ctx)
 		local passed = lane.len - creep_speed * (game_clock() - batch)
 		if passed < job.meet_s - creep_speed * K.MISS_GRACE then
 			job.missed = job.missed + 1
-			if job.missed > K.MAX_MISSED then return abort("волна не пришла") end
+			if job.missed > K.MAX_MISSED then return abort("the wave never showed up") end
 			job.min_t0 = batch + K.SPAWN_PERIOD
 			job.batch = nil
 			job.meet_s = nil
-			note("волна " .. clock_text(batch) .. " не пришла, жду следующую")
+			note("the " .. clock_text(batch) .. " wave never came, waiting for the next one")
 			return
 		end
 	elseif now - job.since > K.SEARCH_MAX then
-		return abort("волна не пришла")
+		return abort("the wave never showed up")
 	end
 
 	target = safe_point(target)
@@ -1734,7 +1843,7 @@ local function step_lead(ctx)
 
 	if not chaser or gap > K.LOST_GAP then
 		job.lost_since = job.lost_since or now
-		if now - job.lost_since > K.LOST_TIME then return rehook("волна отстала", visible) end
+		if now - job.lost_since > K.LOST_TIME then return rehook("the wave fell behind", visible) end
 	else
 		job.lost_since = nil
 	end
@@ -1742,7 +1851,7 @@ local function step_lead(ctx)
 	if not chaser then return issue("hold") end
 	job.info.front = chaser.pos
 	if chaser.pos:Distance2D(ctx.hero_pos) <= K.DELIVER_RADIUS then
-		return set_state("deliver", "волна у героя")
+		return set_state("deliver", "the wave's at you")
 	end
 
 	local follow = job.follow
@@ -1761,7 +1870,7 @@ local function step_lead(ctx)
 			or (stuck_for > K.STUCK_TIME and allied_near(m.pos, K.ENGAGE_RADIUS)) then
 			w.members[m.idx] = nil
 			follow[m.idx] = nil
-			note("крип отстал, веду остальных")
+			note("one creep got lost, bringing the rest")
 		elseif stuck_for > K.STUCK_TIME then
 			if d < straggler_d then straggler, straggler_d = m, d end
 		elseif d > tail_d then
@@ -1810,6 +1919,12 @@ local function step_lead(ctx)
 		target = ctx.hero_pos
 	end
 	target = safe_point(target)
+	if job.guided then
+		local detour = route(ctx.u_pos, target, not job.dive, true)
+		target = guide_point(ctx.u_pos, detour, now)
+		job.info.target = target
+		return issue("move", target, nil, true, true)
+	end
 	job.info.target = target
 	issue("move", target, nil, true)
 end
@@ -1823,8 +1938,8 @@ local function step_deliver(ctx)
 			near[#near + 1] = visible[i]
 		end
 	end
-	if #near == 0 and now - job.since > 0.5 then return finish("волна кончилась") end
-	if now - job.since > K.DELIVER_TIME then return finish("волна доставлена") end
+	if #near == 0 and now - job.since > 0.5 then return finish("the wave's dead") end
+	if now - job.since > K.DELIVER_TIME then return finish("wave delivered") end
 
 	local chaser = nearest(near, ctx.hero_pos)
 	if ui.after:Get() == 1 and chaser then
@@ -1861,7 +1976,7 @@ local STEPS = {
 local function safety_reason(u, ctx)
 	local max_hp = Entity.GetMaxHealth(u) or 0
 	if max_hp > 0 and (Entity.GetHealth(u) or 0) / max_hp * 100.0 < ui.abort_hp:Get() then
-		return "мало HP"
+		return "low HP"
 	end
 	if not job.dive then
 		for i = 1, #danger_towers do
@@ -1869,16 +1984,32 @@ local function safety_reason(u, ctx)
 			if t.pos:Distance2D(ctx.u_pos) <= t.r + K.TOWER_WATCH then
 				local target = Tower.GetAttackTarget(t.ent)
 				if target and Entity.GetIndex(target) == job.idx then
-					return "бьет вышка"
+					return "the tower's hitting it"
 				end
 			end
 		end
 	end
 	if ui.avoid:Get() then
 		local near = Entity.GetHeroesInRadius(u, ui.avoid_radius:Get(), TEAM_ENEMY, true, true)
-		if near and #near > 0 then return "рядом вражеский герой" end
+		if near and #near > 0 then return "enemy hero around" end
 	end
 	return nil
+end
+
+local function build_ally_zones()
+	local zones = {}
+	local groups = cluster_waves(allied_now)
+	for i = 1, #groups do
+		local members = groups[i]
+		local center = wave_center(members)
+		local spread = 0.0
+		for j = 1, #members do
+			local d = members[j].pos:Distance2D(center)
+			if d > spread then spread = d end
+		end
+		zones[#zones + 1] = { pos = center, r = spread + K.ALLY_CLEAR, ally = true }
+	end
+	return zones
 end
 
 local function process()
@@ -1886,12 +2017,13 @@ local function process()
 	if not hero then return end
 	local now = GameRules.GetGameTime()
 	refresh_world(hero, now)
+	ally_zones = build_ally_zones()
 	sample_speed(now)
 	if not job then return end
 
 	local u = job.unit
-	if not NPCs.Contains(u) or not Entity.IsAlive(u) then return finish("крип погиб") end
-	if not Entity.IsAlive(hero) then return finish("герой мертв") end
+	if not NPCs.Contains(u) or not Entity.IsAlive(u) then return finish("your creep died") end
+	if not Entity.IsAlive(hero) then return finish("you're dead") end
 
 	local ctx = {
 		now = now,
@@ -1905,10 +2037,11 @@ local function process()
 		job.hit_at = now
 	end
 	job.last_hp = hp
+	job.guided = free_pathing(u)
 
 	if ACTIVE[job.state] then
 		if job.state ~= "search" and now - job.started > K.JOB_MAX then
-			return abort("слишком долго")
+			return abort("took way too long")
 		end
 		local why = safety_reason(u, ctx)
 		if why then return abort(why) end
@@ -1991,8 +2124,7 @@ local function start_pull()
 
 	local unit = pick_puller(my_id, hero, hero_pos)
 	if not unit then
-		return note(ui.any_unit:Get() and "нет крипа с Доминатора или саммона с запасом HP"
-			or "нет крипа с Доминатора с запасом HP")
+		return note("nobody with enough HP to pull")
 	end
 
 	local chosen, lane, busy
@@ -2008,10 +2140,10 @@ local function start_pull()
 	if chosen then
 		local front = nearest(chosen, hero_pos)
 		if front.pos:Distance2D(hero_pos) <= K.MIN_PULL_DIST then
-			return note("волна уже у героя")
+			return note("the wave's already at you")
 		end
 	elseif not lane then
-		return note(busy and "волна дерется с нашими крипами" or "волна не найдена")
+		return note(busy and "the wave's busy with our creeps" or "no wave anywhere")
 	end
 
 	job = {
@@ -2032,11 +2164,11 @@ local function start_pull()
 
 	if chosen then
 		job.wave = track_wave(chosen, now)
-		set_state("approach", "видимая волна")
+		set_state("approach", "visible wave")
 	elseif busy then
-		set_state("search", "волна у курсора дерется с нашими крипами, жду следующую")
+		set_state("search", "the wave by your cursor is busy with our creeps, waiting for the next one")
 	else
-		set_state("search", "линия " .. lane.name)
+		set_state("search", lane.name .. " lane")
 	end
 end
 
@@ -2058,9 +2190,9 @@ function script.OnUpdate()
 			if not job then
 				start_pull()
 			elseif job.state == "return" then
-				finish("отменено")
+				finish("cancelled")
 			else
-				abort("отменено клавишей")
+				abort("cancelled with the key")
 			end
 		end
 	end
@@ -2108,7 +2240,7 @@ function script.OnPrepareUnitOrders(data)
 		if with_hero then
 			job.order = nil
 		else
-			finish("ручной приказ")
+			finish("you took over")
 		end
 	end
 	return true
@@ -2174,6 +2306,18 @@ function script.OnDraw()
 	draw_marker(info.front, COLORS.front, "F")
 	draw_marker(info.target, COLORS.target, job.state)
 
+	if job.guide and job.state == "lead" then
+		local path = job.guide.path
+		local prev_s, prev_v = nil, false
+		for i = 1, #path do
+			local s, v = Render.WorldToScreen(path[i])
+			if prev_s and v and prev_v then
+				Render.Line(prev_s, s, COLORS.meet, 1.5)
+			end
+			prev_s, prev_v = s, v
+		end
+	end
+
 	if NPCs.Contains(job.unit) then
 		local s, visible = Render.WorldToScreen(Entity.GetAbsOrigin(job.unit))
 		if visible then
@@ -2187,6 +2331,7 @@ function script.OnDraw()
 				end
 			end
 			if job.dive then text = text .. " | dive" end
+			if job.guided then text = text .. " | ground path" end
 			if job.state == "search" and info.hidden then text = text .. " | hide" end
 			if info.gap then text = text .. string.format(" | gap %.0f", info.gap) end
 			if job.retries > 0 then text = text .. " | retry " .. job.retries end
@@ -2205,7 +2350,7 @@ function script.OnGameEnd()
 	creep_speed = K.DEFAULT_CREEP_SPEED
 	speed_track = {}
 	next_speed_sample = 0.0
-	enemy_now, enemy_by_idx, allied_now, danger_towers = {}, {}, {}, {}
+	enemy_now, enemy_by_idx, allied_now, danger_towers, ally_zones = {}, {}, {}, {}, {}
 end
 
 return script
