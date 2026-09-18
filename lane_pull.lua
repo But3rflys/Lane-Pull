@@ -1473,7 +1473,7 @@ end
 
 local function rehook(reason, visible)
 	if wave_engaged(visible) then
-		return abort("волна сцепилась с нашими крипами")
+		return abort("волна встретилась с нашими крипами")
 	end
 	job.retries = job.retries + 1
 	if job.retries > K.MAX_RETRIES then
@@ -1493,10 +1493,10 @@ local function wave_busy()
 		job.batch = nil
 		job.meet_s = nil
 		job.missed = job.missed + 1
-		if job.missed > K.MAX_MISSED then return abort("волна сцепилась с нашими крипами") end
+		if job.missed > K.MAX_MISSED then return abort("волна встретилась с нашими крипами") end
 		return set_state("search", "волна дерется с нашими крипами, жду следующую")
 	end
-	abort("волна сцепилась с нашими крипами")
+	abort("волна встретилась с нашими крипами")
 end
 
 local function wave_lost(now)
