@@ -313,8 +313,6 @@ local localization = qLocalization.new({
 	en = {
 		lp_group_main = "The basics",
 		lp_group_way = "How it plays",
-		lp_group_safe = "Stay safe",
-		lp_group_debug = "Debug stuff",
 		lp_enable = "Turn it on",
 		lp_enable_tip = "Hit the key and your Dominator creep grabs\nthe enemy wave and drags it right to you",
 		lp_key = "Pull key",
@@ -344,12 +342,39 @@ local localization = qLocalization.new({
 		lp_debug = "Debug overlay",
 		lp_debug_tip = "Shows lanes, wave guesses, what your creep\nis up to and dumps stuff into the log",
 		lp_bind_name = "Lane Pull",
+		lp_panel = "Show status bar",
+		lp_panel_tip = "Little bar that tells you what your creep is doing,\nno debug lines needed",
+		lp_panel_x = "Horizontal spot",
+		lp_panel_y = "Distance from the top",
+		lp_gear_extra = "Extra",
+		lp_gear_panel = "Look",
+		lp_gear_avoid = "Hero check",
+		lp_panel_icon = "Icon",
+		lp_icons_square = "Rounded square",
+		lp_icons_round = "Circle",
+		lp_icons_none = "No icon",
+		lp_panel_scale = "Size",
+		lp_panel_alpha = "How dark the background is",
+		lp_panel_blur = "Blur behind it",
+		lp_st_wait = "Waiting for the %s wave",
+		lp_st_sec = "%ds",
+		lp_st_approach = "Heading to the wave",
+		lp_st_hook = "Hooking the wave",
+		lp_st_lead = "Bringing the pack",
+		lp_st_deliver = "Pack's at you",
+		lp_st_return = "Heading back",
+		lp_st_done = "Done",
+		lp_st_cancel = "Called off",
+		lp_st_creep1 = "creep",
+		lp_st_creep2 = "creeps",
+		lp_st_creep5 = "creeps",
+		lp_lane_top = "top",
+		lp_lane_mid = "mid",
+		lp_lane_bot = "bot",
 	},
 	ru = {
 		lp_group_main = "Основное",
 		lp_group_way = "Поведение",
-		lp_group_safe = "Безопасность",
-		lp_group_debug = "Отладка",
 		lp_enable = "Включить",
 		lp_enable_tip = "Крип с Доминатора по нажатию клавиши забирает\nвражескую волну и ведет ее к герою",
 		lp_key = "Клавиша выпула",
@@ -379,6 +404,35 @@ local localization = qLocalization.new({
 		lp_debug = "Отладочный оверлей",
 		lp_debug_tip = "Линии, прогноз волны, состояние крипа\nи сообщения в лог",
 		lp_bind_name = "Выпул волны",
+		lp_panel = "Показывать панель",
+		lp_panel_tip = "Маленькая строка с тем, что сейчас делает крип,\nбез отладочных линий",
+		lp_panel_x = "Положение по горизонтали",
+		lp_panel_y = "Отступ сверху",
+		lp_gear_extra = "Дополнительно",
+		lp_gear_panel = "Оформление",
+		lp_gear_avoid = "Проверка героев",
+		lp_panel_icon = "Иконка",
+		lp_icons_square = "Скругленный квадрат",
+		lp_icons_round = "Круг",
+		lp_icons_none = "Без иконки",
+		lp_panel_scale = "Размер",
+		lp_panel_alpha = "Плотность фона",
+		lp_panel_blur = "Размытие фона",
+		lp_st_wait = "Жду волну %s",
+		lp_st_sec = "%d с",
+		lp_st_approach = "Иду к волне",
+		lp_st_hook = "Цепляю волну",
+		lp_st_lead = "Веду пачку",
+		lp_st_deliver = "Пачка у тебя",
+		lp_st_return = "Возвращаюсь",
+		lp_st_done = "Готово",
+		lp_st_cancel = "Отменено",
+		lp_st_creep1 = "крип",
+		lp_st_creep2 = "крипа",
+		lp_st_creep5 = "крипов",
+		lp_lane_top = "топ",
+		lp_lane_mid = "мид",
+		lp_lane_bot = "бот",
 	},
 })
 
@@ -389,9 +443,7 @@ tab:Icon("\u{f4d7}")
 
 local page = tab:Create("Settings")
 local g_main = page:Create("lp_group_main", Enum.GroupSide.Left)
-local g_way = page:Create("lp_group_way", Enum.GroupSide.Left)
-local g_safe = page:Create("lp_group_safe", Enum.GroupSide.Right)
-local g_debug = page:Create("lp_group_debug", Enum.GroupSide.Right)
+local g_way = page:Create("lp_group_way", Enum.GroupSide.Right)
 
 local ORDER_ID = "lane_pull"
 local K = {
@@ -414,8 +466,26 @@ local K = {
 	GUIDE_REPLAN_TIME   = 1.5,
 	GUIDE_REACH         = 120.0,
 	GUIDE_LOOKAHEAD     = 500.0,
+	PATH_DETOURS        = 3,
+	NAV_NEAR            = 1500.0,
+	ATTACK_APPROACH     = 200.0,
+	HOOK_OVERHEAD       = 1.0,
+	CATCH_MARGIN        = 1.0,
+	PANEL_HEIGHT        = 26,
+	PANEL_ICON          = 20,
+	PANEL_FONT          = 12,
+	PANEL_LINGER        = 3.0,
+	PANEL_CORNER        = 7,
+	PANEL_ICON_CORNER   = 5,
+	PANEL_ICON_ZOOM     = 0.06,
+	PANEL_FADE          = 0.18,
+	PANEL_TEXT_FADE     = 0.15,
+	PANEL_WIDTH_SPEED   = 14.0,
+	PANEL_COLOR_SPEED   = 12.0,
+	PANEL_SLIDE         = 6.0,
+	PANEL_TINT          = 28,
+	PANEL_ICON_EDGE     = 30,
 	LIFE_EPS            = 3.0,
-	ALLY_CLEAR          = 650.0,
 	PATH_FACTOR         = 1.25,
 	WAIT_WEIGHT         = 25.0,
 	FUTURE_BATCHES      = 2,
@@ -610,15 +680,21 @@ local enemy_now = {}
 local enemy_by_idx = {}
 local allied_now = {}
 local danger_towers = {}
-local ally_zones = {}
 local last_msg = nil
 local last_msg_t = -100.0
 local debug_font = nil
+local last_result = nil
+local panel_fonts = nil
+local panel_icons = {}
+local panel_anim = { vis = 0.0, text_t = 1.0 }
 
 local ui = {}
 
 ui.enable = g_main:Switch("lp_enable", false, "\u{f011}")
 ui.enable:ToolTip("lp_enable_tip")
+local g_extra = ui.enable:Gear("lp_gear_extra")
+ui.debug = g_extra:Switch("lp_debug", false, "\u{f188}")
+ui.debug:ToolTip("lp_debug_tip")
 
 ui.key = g_main:Bind("lp_key", Enum.ButtonCode.KEY_NONE, "\u{f11c}")
 ui.key:ToolTip("lp_key_tip")
@@ -626,6 +702,21 @@ ui.key:ToolTip("lp_key_tip")
 ui.pick = g_main:Combo("lp_pick", { "lp_picks_hero", "lp_picks_puller", "lp_picks_cursor" }, 0)
 ui.pick:Icon("\u{f05b}")
 ui.pick:ToolTip("lp_pick_tip")
+
+ui.panel = g_main:Switch("lp_panel", true, "\u{f05a}")
+ui.panel:ToolTip("lp_panel_tip")
+local g_look = ui.panel:Gear("lp_gear_panel")
+ui.panel_icon = g_look:Combo("lp_panel_icon", { "lp_icons_square", "lp_icons_round", "lp_icons_none" }, 0)
+ui.panel_icon:Icon("\u{f03e}")
+ui.panel_scale = g_look:Slider("lp_panel_scale", 80, 160, 100, "%d%%")
+ui.panel_scale:Icon("\u{f065}")
+ui.panel_alpha = g_look:Slider("lp_panel_alpha", 0, 100, 82, "%d%%")
+ui.panel_alpha:Icon("\u{f043}")
+ui.panel_blur = g_look:Switch("lp_panel_blur", false, "\u{f042}")
+ui.panel_x = g_look:Slider("lp_panel_x", 0, 100, 50, "%d%%")
+ui.panel_x:Icon("\u{f337}")
+ui.panel_y = g_look:Slider("lp_panel_y", 0, 600, 70, "%d px")
+ui.panel_y:Icon("\u{f338}")
 
 local unit_items = {}
 for i = 1, #UNIT_KINDS do
@@ -650,18 +741,15 @@ ui.after = g_way:Combo("lp_after", { "lp_afters_stay", "lp_afters_attack" }, 0)
 ui.after:Icon("\u{f11e}")
 ui.after:ToolTip("lp_after_tip")
 
-ui.abort_hp = g_safe:Slider("lp_abort_hp", 10, 80, 30, "%d%%")
+ui.abort_hp = g_way:Slider("lp_abort_hp", 10, 80, 30, "%d%%")
 ui.abort_hp:Icon("\u{f004}")
 ui.abort_hp:ToolTip("lp_abort_hp_tip")
 
-ui.avoid = g_safe:Switch("lp_avoid", true, "\u{f70c}")
+ui.avoid = g_way:Switch("lp_avoid", true, "\u{f70c}")
 ui.avoid:ToolTip("lp_avoid_tip")
-
-ui.avoid_radius = g_safe:Slider("lp_avoid_radius", 500, 1600, 900, "%d")
+local g_avoid = ui.avoid:Gear("lp_gear_avoid")
+ui.avoid_radius = g_avoid:Slider("lp_avoid_radius", 500, 1600, 900, "%d")
 ui.avoid_radius:Icon("\u{f1ce}")
-
-ui.debug = g_debug:Switch("lp_debug", false, "\u{f188}")
-ui.debug:ToolTip("lp_debug_tip")
 
 ui.key:Properties(localization.Get("lp_bind_name"))
 
@@ -677,6 +765,7 @@ local function refresh_disabled()
 	ui.abort_hp:Disabled(not on)
 	ui.avoid:Disabled(not on)
 	ui.avoid_radius:Disabled(not on or not ui.avoid:Get())
+	ui.panel:Disabled(not on)
 	ui.debug:Disabled(not on)
 end
 
@@ -1061,18 +1150,15 @@ local function walkable_near(pt, center)
 	return pt
 end
 
-local function route(from, to, use_towers, use_allies)
+local function route(from, to)
 	local fx, fy = from:GetX(), from:GetY()
 	local dx, dy = to:GetX() - fx, to:GetY() - fy
 	local len2 = dx * dx + dy * dy
 	if len2 < 1.0 then return to end
-	local enter, t = nil, nil
-	if use_towers then enter, t = first_entry(fx, fy, dx, dy, danger_towers, enter, t) end
-	if use_allies then enter, t = first_entry(fx, fy, dx, dy, ally_zones, enter, t) end
+	local enter, t = first_entry(fx, fy, dx, dy, danger_towers)
 	if not enter then return to end
 
 	if t.pos:Distance2D(to) < t.r then
-		if t.ally then return to end
 		local k = math.max(0.0, enter - K.CLIP_MARGIN / math.sqrt(len2))
 		return Vector(fx + dx * k, fy + dy * k, to:GetZ())
 	end
@@ -1339,7 +1425,14 @@ local function hook_point(front, hero_pos, w, from, from_speed)
 	return safe_point(walkable_near(target, center))
 end
 
-local function detect_wave(lane, anchors)
+local function wave_skipped(members, skipped)
+	for i = 1, #members do
+		if skipped[members[i].idx] then return true end
+	end
+	return false
+end
+
+local function detect_wave(lane, anchors, skipped)
 	local waves = cluster_waves(enemy_now)
 	local best, best_d = nil, K.SEARCH_DETECT
 	for i = 1, #waves do
@@ -1349,7 +1442,7 @@ local function detect_wave(lane, anchors)
 			local _, perp = lane_project(lane, wave_center(members))
 			on_lane = perp <= K.LANE_BAND
 		end
-		if on_lane and not wave_engaged(members) then
+		if on_lane and not wave_engaged(members) and not wave_skipped(members, skipped) then
 			for j = 1, #anchors do
 				local _, d = nearest(members, anchors[j])
 				if d < best_d then best, best_d = members, d end
@@ -1456,28 +1549,122 @@ local function dist_xy(ax, ay, bx, by)
 	return math.sqrt(dx * dx + dy * dy)
 end
 
-local function guide_point(from, goal, now)
-	local g = job.guide
-	if not g or g.goal:Distance2D(goal) > K.GUIDE_REPLAN_DIST or now - g.t > K.GUIDE_REPLAN_TIME then
-		g = { goal = goal:Clone(), path = GridNav.BuildPath(from, goal, false) or {}, i = 1, t = now }
-		job.guide = g
+local function blocking_tower(pt, from, goal)
+	for i = 1, #danger_towers do
+		local t = danger_towers[i]
+		if pt:Distance2D(t.pos) < t.r
+			and from:Distance2D(t.pos) >= t.r
+			and goal:Distance2D(t.pos) >= t.r then
+			return t
+		end
 	end
-	local path = g.path
-	if #path == 0 then return goal end
-	while g.i <= #path and from:Distance2D(path[g.i]) < K.GUIDE_REACH do
-		g.i = g.i + 1
+	return nil
+end
+
+local function tower_side_point(tower, inside)
+	local cx, cy = tower.pos:GetX(), tower.pos:GetY()
+	local sx, sy = 0.0, 0.0
+	for i = 1, #inside do
+		sx = sx + inside[i]:GetX() - cx
+		sy = sy + inside[i]:GetY() - cy
 	end
-	if g.i > #path then return goal end
-	local j = g.i
-	while j < #path
-		and from:Distance2D(path[j + 1]) < K.GUIDE_LOOKAHEAD
-		and GridNav.IsTraversableFromTo(from, path[j + 1], false) do
+	local l = math.sqrt(sx * sx + sy * sy)
+	if l < 1.0 then sx, sy, l = 1.0, 0.0, 1.0 end
+	local rad = tower.r + K.DETOUR_MARGIN
+	local p = Vector(cx + sx / l * rad, cy + sy / l * rad, tower.pos:GetZ())
+	return walkable_near(p, tower.pos)
+end
+
+local function build_legs(from, stops)
+	local path = {}
+	local start = from
+	for s = 1, #stops do
+		local leg = GridNav.BuildPath(start, stops[s], false) or {}
+		if #leg == 0 then leg = { stops[s] } end
+		for k = 1, #leg do
+			path[#path + 1] = { pos = leg[k], leg = s }
+		end
+		start = stops[s]
+	end
+	return path
+end
+
+local function safe_path(from, goal)
+	local stops = { goal }
+	local path = build_legs(from, stops)
+	for _ = 1, K.PATH_DETOURS do
+		local hit, first = nil, nil
+		for k = 1, #path do
+			hit = blocking_tower(path[k].pos, from, goal)
+			if hit then
+				first = k
+				break
+			end
+		end
+		if not hit then break end
+		local inside = {}
+		for k = first, #path do
+			if path[k].pos:Distance2D(hit.pos) < hit.r then
+				inside[#inside + 1] = path[k].pos
+			else
+				break
+			end
+		end
+		table.insert(stops, path[first].leg, tower_side_point(hit, inside))
+		path = build_legs(from, stops)
+	end
+	local points = {}
+	for k = 1, #path do points[k] = path[k].pos end
+	return points
+end
+
+local function towers_near_route(from, goal)
+	local fx, fy = from:GetX(), from:GetY()
+	local dx, dy = goal:GetX() - fx, goal:GetY() - fy
+	local len2 = dx * dx + dy * dy
+	for i = 1, #danger_towers do
+		local t = danger_towers[i]
+		local cx, cy = t.pos:GetX(), t.pos:GetY()
+		local k = len2 > 0 and ((cx - fx) * dx + (cy - fy) * dy) / len2 or 0
+		k = math.max(0.0, math.min(1.0, k))
+		local px, py = fx + dx * k - cx, fy + dy * k - cy
+		if math.sqrt(px * px + py * py) < t.r + K.NAV_NEAR then return true end
+	end
+	return false
+end
+
+local function navigate(from, goal, now, follow)
+	if job.dive then return goal end
+	local nav = job.nav
+	if not nav or nav.goal:Distance2D(goal) > K.GUIDE_REPLAN_DIST or now - nav.t > K.GUIDE_REPLAN_TIME then
+		nav = { goal = goal:Clone(), t = now, i = 1, path = {}, near = towers_near_route(from, goal) }
+		if follow or nav.near then
+			nav.path = safe_path(from, goal)
+		end
+		job.nav = nav
+	end
+	if not follow and not nav.near then return goal end
+
+	local path = nav.path
+	if #path == 0 then return route(from, goal) end
+	while nav.i <= #path and from:Distance2D(path[nav.i]) < K.GUIDE_REACH do
+		nav.i = nav.i + 1
+	end
+	if nav.i > #path then return goal end
+
+	local j = nav.i
+	local fx, fy = from:GetX(), from:GetY()
+	while j < #path do
+		local nxt = path[j + 1]
+		if from:Distance2D(nxt) >= K.GUIDE_LOOKAHEAD then break end
+		if not GridNav.IsTraversableFromTo(from, nxt, false) then break end
+		if first_entry(fx, fy, nxt:GetX() - fx, nxt:GetY() - fy, danger_towers) then break end
 		j = j + 1
 	end
 	return path[j]
 end
 
-local function issue(kind, pos, target, no_settle, no_route)
+local function issue(kind, pos, target, no_settle)
 	local u = job.unit
 	if orders_blocked(u) then return end
 	local now = GameRules.GetGameTime()
@@ -1486,11 +1673,17 @@ local function issue(kind, pos, target, no_settle, no_route)
 	local prev = job.order
 	local goal = nil
 
+	if kind == "attack" and target and not job.dive then
+		local target_pos = Entity.GetAbsOrigin(target)
+		local reach = (NPC.GetAttackRange(u) or 0) + K.ATTACK_APPROACH
+		if u_pos:Distance2D(target_pos) > reach and towers_near_route(u_pos, target_pos) then
+			kind, pos, target = "move", target_pos, nil
+		end
+	end
+
 	if kind == "move" or kind == "attack_move" then
 		if move_blocked(u) then return end
-		if not no_route then
-			pos = route(u_pos, pos, not job.dive, job.state == "lead")
-		end
+		pos = navigate(u_pos, pos, now, job.guided and job.state == "lead")
 	end
 	if kind == "move" then
 		local gx, gy = pos:GetX(), pos:GetY()
@@ -1562,7 +1755,7 @@ local function set_state(state, reason)
 	job.hook_idx = nil
 	job.lead_best = nil
 	job.lead_t = nil
-	job.guide = nil
+	job.nav = nil
 	job.info.gap = nil
 	if state == "lead" then
 		job.led = true
@@ -1573,6 +1766,12 @@ end
 
 local function finish(reason)
 	if reason then note("done: " .. reason) end
+	last_result = {
+		ok = job.state == "deliver",
+		icon = job.icon,
+		lane = job.lane and job.lane.name,
+		t = GameRules.GetGameTime(),
+	}
 	job = nil
 end
 
@@ -1606,6 +1805,43 @@ local function wave_busy()
 		return set_state("search", "the wave's busy with our creeps, waiting for the next one")
 	end
 	abort("the wave ran into our creeps")
+end
+
+local function wave_catchable(ctx, members)
+	local lane = job.lane
+	if not lane then return true end
+	local ours = {}
+	for i = 1, #allied_now do
+		local _, perp = lane_project(lane, allied_now[i].pos)
+		if perp <= K.LANE_BAND then ours[#ours + 1] = allied_now[i] end
+	end
+	if #ours == 0 then return true end
+
+	local gap = math.huge
+	for i = 1, #members do
+		local _, d = nearest(ours, members[i].pos)
+		if d < gap then gap = d end
+	end
+	local _, moving = lane_front(lane)
+	local closing = moving and creep_speed * 2.0 or creep_speed
+	local clash_eta = math.max(0.0, gap - K.ENGAGE_RADIUS) / closing
+
+	local _, reach = nearest(members, ctx.u_pos)
+	local eta = math.max(0.0, reach - K.HOOK_ENGAGE) * K.PATH_FACTOR / ctx.u_speed + K.HOOK_OVERHEAD
+	return eta + K.CATCH_MARGIN <= clash_eta
+end
+
+local function skip_wave(members)
+	for i = 1, #members do job.skipped[members[i].idx] = true end
+	if job.lane then
+		local s = lane_project(job.lane, wave_center(members))
+		local t0 = game_clock() - (job.lane.len - s) / creep_speed
+		t0 = math.floor(t0 / K.SPAWN_PERIOD + 0.5) * K.SPAWN_PERIOD
+		job.min_t0 = math.max(job.min_t0 or 0, t0 + K.SPAWN_PERIOD)
+	end
+	job.batch = nil
+	job.meet_s = nil
+	job.hide = nil
 end
 
 local function wave_lost(now)
@@ -1674,6 +1910,12 @@ local function step_approach(ctx)
 	end
 	if hooked() then return set_state("lead", "picked up aggro on the way") end
 	if wave_engaged(visible) then return wave_busy() end
+	if job.lane and not job.led and not wave_catchable(ctx, visible) then
+		skip_wave(visible)
+		job.wave = nil
+		job.info.front = nil
+		return set_state("search", "won't make it before our creeps, going for the next wave")
+	end
 
 	local _, close_d = nearest(outside_towers(visible), ctx.u_pos)
 	if close_d <= K.HOOK_ENGAGE then
@@ -1782,6 +2024,7 @@ local function step_search(ctx)
 		job.info.pred = lane_point(lane, s_pred)
 		job.info.meet = meet
 		job.info.batch = t0
+		job.info.eta = (s_pred - meet_s) / creep_speed
 		target = hide_target(ctx, lane, meet, meet_s, s_pred) or meet
 		job.info.hidden = target ~= meet
 	else
@@ -1789,7 +2032,12 @@ local function step_search(ctx)
 		target = job.cursor
 	end
 
-	local found = detect_wave(lane, { ctx.u_pos, meet })
+	local found = detect_wave(lane, { ctx.u_pos, meet }, job.skipped)
+	if found and not wave_catchable(ctx, found) then
+		skip_wave(found)
+		note("won't make it before our creeps, going for the next wave")
+		return
+	end
 	if found then
 		job.wave = track_wave(found, now)
 		job.info.pred = nil
@@ -1840,6 +2088,7 @@ local function step_lead(ctx)
 	end
 	local chaser, gap = nearest(pack, ctx.u_pos)
 	job.info.gap = chaser and gap or nil
+	job.info.pack = #pack
 
 	if not chaser or gap > K.LOST_GAP then
 		job.lost_since = job.lost_since or now
@@ -1872,7 +2121,9 @@ local function step_lead(ctx)
 			follow[m.idx] = nil
 			note("one creep got lost, bringing the rest")
 		elseif stuck_for > K.STUCK_TIME then
-			if d < straggler_d then straggler, straggler_d = m, d end
+			if d < straggler_d and (job.dive or not in_danger(m.pos)) then
+				straggler, straggler_d = m, d
+			end
 		elseif d > tail_d then
 			tail_d = d
 		end
@@ -1919,12 +2170,6 @@ local function step_lead(ctx)
 		target = ctx.hero_pos
 	end
 	target = safe_point(target)
-	if job.guided then
-		local detour = route(ctx.u_pos, target, not job.dive, true)
-		target = guide_point(ctx.u_pos, detour, now)
-		job.info.target = target
-		return issue("move", target, nil, true, true)
-	end
 	job.info.target = target
 	issue("move", target, nil, true)
 end
@@ -1996,28 +2241,11 @@ local function safety_reason(u, ctx)
 	return nil
 end
 
-local function build_ally_zones()
-	local zones = {}
-	local groups = cluster_waves(allied_now)
-	for i = 1, #groups do
-		local members = groups[i]
-		local center = wave_center(members)
-		local spread = 0.0
-		for j = 1, #members do
-			local d = members[j].pos:Distance2D(center)
-			if d > spread then spread = d end
-		end
-		zones[#zones + 1] = { pos = center, r = spread + K.ALLY_CLEAR, ally = true }
-	end
-	return zones
-end
-
 local function process()
 	local hero = Heroes.GetLocal()
 	if not hero then return end
 	local now = GameRules.GetGameTime()
 	refresh_world(hero, now)
-	ally_zones = build_ally_zones()
 	sample_speed(now)
 	if not job then return end
 
@@ -2156,6 +2384,8 @@ local function start_pull()
 		retries = 0,
 		missed = busy and 1 or 0,
 		hide_bad = {},
+		skipped = {},
+		icon = (unit_kind(unit) or {}).icon,
 		hit_at = -100.0,
 		last_hp = Entity.GetHealth(unit),
 		info = {},
@@ -2276,9 +2506,214 @@ local function draw_lane(lane)
 	end
 end
 
+local PANEL = {
+	wait = { 232, 178, 74 },
+	move = { 143, 183, 255 },
+	lead = { 64, 214, 108 },
+	stop = { 226, 52, 52 },
+}
+
+local ROUND_ALL = Enum.DrawFlags.RoundCornersAll
+
+local function panel_icon(path)
+	if not path then return nil end
+	local entry = panel_icons[path]
+	if entry == nil then
+		local handle = Render.LoadImage(path)
+		entry = handle and { handle = handle } or false
+		panel_icons[path] = entry
+	end
+	if not entry then return nil end
+	if not entry.uv0 then
+		local size = Render.ImageSize(entry.handle)
+		if not size or size.x <= 0 or size.y <= 0 then return nil end
+		local u0, v0, u1, v1 = 0.0, 0.0, 1.0, 1.0
+		if size.x > size.y then
+			local d = (1.0 - size.y / size.x) / 2
+			u0, u1 = d, 1.0 - d
+		elseif size.y > size.x then
+			local d = (1.0 - size.x / size.y) / 2
+			v0, v1 = d, 1.0 - d
+		end
+		local zu, zv = (u1 - u0) * K.PANEL_ICON_ZOOM, (v1 - v0) * K.PANEL_ICON_ZOOM
+		entry.uv0 = Vec2(u0 + zu, v0 + zv)
+		entry.uv1 = Vec2(u1 - zu, v1 - zv)
+	end
+	return entry
+end
+
+local function creeps_text(n)
+	local m10, m100 = n % 10, n % 100
+	local form = "lp_st_creep5"
+	if m10 == 1 and m100 ~= 11 then
+		form = "lp_st_creep1"
+	elseif m10 >= 2 and m10 <= 4 and (m100 < 12 or m100 > 14) then
+		form = "lp_st_creep2"
+	end
+	return n .. " " .. localization.Get(form)
+end
+
+local function join_parts(...)
+	local parts = {}
+	for i = 1, select("#", ...) do
+		local part = select(i, ...)
+		if part then parts[#parts + 1] = part end
+	end
+	return #parts > 0 and table.concat(parts, " · ") or nil
+end
+
+local function lane_label(name)
+	return name and localization.Get("lp_lane_" .. name) or nil
+end
+
+local function panel_content(now)
+	local T = localization.Get
+	if job then
+		local st, info = job.state, job.info
+		local lane = lane_label(job.lane and job.lane.name)
+		if st == "search" then
+			local eta = info.eta and string.format(T("lp_st_sec"), math.max(0, math.floor(info.eta + 0.5))) or nil
+			return job.icon, PANEL.wait, string.format(T("lp_st_wait"), clock_text(info.batch or 0)), join_parts(lane, eta)
+		elseif st == "approach" or st == "hook" then
+			local dist = nil
+			if info.front and NPCs.Contains(job.unit) then
+				dist = tostring(math.floor(Entity.GetAbsOrigin(job.unit):Distance2D(info.front)))
+			end
+			return job.icon, PANEL.move, T(st == "hook" and "lp_st_hook" or "lp_st_approach"), join_parts(lane, dist)
+		elseif st == "lead" then
+			return job.icon, PANEL.lead, T("lp_st_lead"), join_parts(lane, info.pack and creeps_text(info.pack) or nil)
+		elseif st == "deliver" then
+			return job.icon, PANEL.lead, T("lp_st_deliver"), lane
+		end
+		return job.icon, PANEL.stop, T("lp_st_return"), nil
+	end
+	if last_result and now - last_result.t < K.PANEL_LINGER then
+		local ok = last_result.ok
+		return last_result.icon, ok and PANEL.lead or PANEL.stop, T(ok and "lp_st_done" or "lp_st_cancel"),
+			lane_label(last_result.lane)
+	end
+	return nil
+end
+
+local function ease_out(t)
+	return 1 - (1 - t) ^ 3
+end
+
+local function approach(current, target, dt, speed)
+	return current + (target - current) * (1 - math.exp(-dt * speed))
+end
+
+local function draw_panel()
+	local an = panel_anim
+	local dt = math.max(0.0, math.min(0.1, GlobalVars.GetAbsFrameTime() or 0.016))
+
+	local shown = false
+	if ui.panel:Get() then
+		local icon_path, rgb, title, detail = panel_content(GameRules.GetGameTime())
+		if title then
+			shown = true
+			if an.title ~= title then
+				an.title = title
+				an.text_t = 0.0
+			end
+			an.last = { icon = icon_path, rgb = rgb, title = title, detail = detail }
+		end
+	end
+	if shown then
+		an.vis = math.min(1.0, an.vis + dt / K.PANEL_FADE)
+	else
+		an.vis = math.max(0.0, an.vis - dt / K.PANEL_FADE)
+	end
+	if an.vis <= 0 or not an.last then
+		an.w, an.rgb, an.title = nil, nil, nil
+		return
+	end
+	an.text_t = math.min(1.0, an.text_t + dt / K.PANEL_TEXT_FADE)
+
+	local icon_path, target_rgb, title, detail = an.last.icon, an.last.rgb, an.last.title, an.last.detail
+
+	if not panel_fonts then
+		local flags = Enum.FontCreate.FONTFLAG_ANTIALIAS
+		panel_fonts = {
+			semi = Render.LoadFont("Segoe UI", flags, Enum.FontWeight.SEMIBOLD),
+			regular = Render.LoadFont("Segoe UI", flags, Enum.FontWeight.NORMAL),
+		}
+	end
+
+	local scale = ui.panel_scale:Get() / 100
+	local h = math.floor(K.PANEL_HEIGHT * scale + 0.5)
+	local s = math.floor(K.PANEL_ICON * scale + 0.5)
+	local size = math.floor(K.PANEL_FONT * scale + 0.5)
+	local gap = 7 * scale
+	local dot = 3 * scale
+
+	local shape = ui.panel_icon:Get()
+	local icon = shape ~= 2 and panel_icon(icon_path) or nil
+	local radius = shape == 0 and K.PANEL_CORNER * scale or h / 2
+	local icon_r = shape == 0 and K.PANEL_ICON_CORNER * scale or s / 2
+	local inset = (h - s) / 2
+
+	local extra = detail and (" · " .. detail) or nil
+	local title_size = Render.TextSize(panel_fonts.semi, size, title)
+	local extra_w = extra and Render.TextSize(panel_fonts.regular, size, extra).x or 0
+
+	local lead = icon and (inset + s + gap) or 11 * scale
+	local target_w = lead + dot * 2 + gap + title_size.x + extra_w + 11 * scale
+	an.w = an.w and approach(an.w, target_w, dt, K.PANEL_WIDTH_SPEED) or target_w
+	if an.rgb then
+		for i = 1, 3 do an.rgb[i] = approach(an.rgb[i], target_rgb[i], dt, K.PANEL_COLOR_SPEED) end
+	else
+		an.rgb = { target_rgb[1], target_rgb[2], target_rgb[3] }
+	end
+
+	local e = ease_out(an.vis)
+	local w = math.floor(an.w + 0.5)
+	local screen = Render.ScreenSize()
+	local x = math.floor(screen.x * ui.panel_x:Get() / 100 - w / 2)
+	x = math.max(4, math.min(screen.x - w - 4, x))
+	local y = math.floor(ui.panel_y:Get() - (1 - e) * K.PANEL_SLIDE * scale + 0.5)
+	local a, b = Vec2(x, y), Vec2(x + w, y + h)
+
+	local r, g, bl = math.floor(an.rgb[1] + 0.5), math.floor(an.rgb[2] + 0.5), math.floor(an.rgb[3] + 0.5)
+	local function faded(value)
+		return math.floor(value * e + 0.5)
+	end
+
+	if ui.panel_blur:Get() then
+		Render.Blur(a, b, 1.0, e, radius, ROUND_ALL)
+	end
+	Render.FilledRect(a, b, Color(14, 14, 18, faded(255 * ui.panel_alpha:Get() / 100)), radius, ROUND_ALL)
+	Render.Gradient(a, b,
+		Color(r, g, bl, faded(K.PANEL_TINT)), Color(r, g, bl, faded(K.PANEL_TINT)),
+		Color(r, g, bl, 0), Color(r, g, bl, 0), radius, ROUND_ALL)
+
+	if icon then
+		local ia = Vec2(x + inset, y + inset)
+		local ib = Vec2(x + inset + s, y + inset + s)
+		Render.Image(icon.handle, ia, Vec2(s, s), Color(255, 255, 255, faded(255)),
+			icon_r, ROUND_ALL, icon.uv0, icon.uv1)
+		local edge = Color(255, 255, 255, faded(K.PANEL_ICON_EDGE))
+		Render.OutlineGradient(ia, ib, edge, edge, edge, edge, icon_r, ROUND_ALL, 1)
+	end
+
+	Render.PushClip(a, b)
+	local cx = x + lead
+	Render.FilledCircle(Vec2(cx + dot, y + h / 2), dot, Color(r, g, bl, faded(255)))
+	cx = cx + dot * 2 + gap
+	local t = ease_out(an.text_t)
+	local ty = y + math.floor((h - title_size.y) / 2)
+	Render.Text(panel_fonts.semi, size, title, Vec2(cx, ty), Color(236, 236, 238, faded(255 * t)))
+	if extra then
+		Render.Text(panel_fonts.regular, size, extra, Vec2(cx + title_size.x, ty), Color(154, 154, 162, faded(255 * t)))
+	end
+	Render.PopClip()
+end
+
 function script.OnDraw()
-	if not ui.enable:Get() or not ui.debug:Get() then return end
+	if not ui.enable:Get() then return end
 	if not Engine.IsInGame() then return end
+	draw_panel()
+	if not ui.debug:Get() then return end
 
 	if not debug_font then
 		debug_font = Render.LoadFont("Verdana", Enum.FontCreate.FONTFLAG_ANTIALIAS, 500)
@@ -2306,8 +2741,8 @@ function script.OnDraw()
 	draw_marker(info.front, COLORS.front, "F")
 	draw_marker(info.target, COLORS.target, job.state)
 
-	if job.guide and job.state == "lead" then
-		local path = job.guide.path
+	if job.nav and #job.nav.path > 0 then
+		local path = job.nav.path
 		local prev_s, prev_v = nil, false
 		for i = 1, #path do
 			local s, v = Render.WorldToScreen(path[i])
@@ -2342,6 +2777,7 @@ end
 
 function script.OnGameEnd()
 	job = nil
+	last_result = nil
 	next_run = 0.0
 	next_struct_scan = 0.0
 	lanes = nil
@@ -2350,7 +2786,7 @@ function script.OnGameEnd()
 	creep_speed = K.DEFAULT_CREEP_SPEED
 	speed_track = {}
 	next_speed_sample = 0.0
-	enemy_now, enemy_by_idx, allied_now, danger_towers, ally_zones = {}, {}, {}, {}, {}
+	enemy_now, enemy_by_idx, allied_now, danger_towers = {}, {}, {}, {}
 end
 
 return script
